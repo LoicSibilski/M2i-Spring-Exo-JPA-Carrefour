@@ -5,10 +5,10 @@ import org.springframework.context.annotation.Configuration;
 
 import com.m2i.exo.models.Categorie;
 import com.m2i.exo.models.Client;
-import com.m2i.exo.models.Commande;
 import com.m2i.exo.models.Magasin;
 import com.m2i.exo.models.Produit;
 import com.m2i.exo.models.Ville;
+import com.m2i.exo.services.CommandeService;
 import com.m2i.exo.services.GenericService;
 import com.m2i.exo.services.implementations.CategorieServiceImpl;
 import com.m2i.exo.services.implementations.ClientServiceImpl;
@@ -31,7 +31,7 @@ public class ServiceConfig {
 	}
 
 	@Bean
-	public GenericService<Commande> commandeServiceFactory() {
+	public CommandeService commandeServiceFactory() {
 		return new CommandeServiceImpl();
 	}
 

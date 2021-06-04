@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.m2i.exo.models.Commande;
-import com.m2i.exo.services.GenericService;
+import com.m2i.exo.services.CommandeService;
 
 @RestController
 @RequestMapping("commandes")
 public class CommandeController {
 
 	@Autowired
-	private GenericService<Commande> commandeService;
+	private CommandeService commandeService;
 
 	@GetMapping()
 	public List<Commande> getAll() {
@@ -30,6 +30,11 @@ public class CommandeController {
 	@GetMapping("/{id}")
 	public Commande getCommandeById(@PathVariable Long id) {
 		return this.commandeService.getById(id);
+	}
+	
+	@GetMapping("/client/{id}")
+	public List<Commande> getAllByClient(@PathVariable Long id) {
+		return this.commandeService.findByClientId(id);
 	}
 
 	@PostMapping()

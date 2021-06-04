@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.m2i.exo.models.Commande;
 import com.m2i.exo.repositories.CommandeRepository;
-import com.m2i.exo.services.GenericService;
+import com.m2i.exo.services.CommandeService;
 
-public class CommandeServiceImpl implements GenericService<Commande>{
+public class CommandeServiceImpl implements CommandeService{
 
 	@Autowired
 	private CommandeRepository commandeRepository;
@@ -48,5 +48,10 @@ public class CommandeServiceImpl implements GenericService<Commande>{
 			this.commandeRepository.delete(commande);
 		}
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public List<Commande> findByClientId(Long id) {
+		return this.commandeRepository.findByClientId(id);
 	}
 }
